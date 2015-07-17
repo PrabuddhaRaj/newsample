@@ -1,0 +1,8 @@
+service  { 
+    "SINGHPRAB"."MaintainIT.tablestructures::devices"
+	 as "Devices" 
+  	 navigates ("Device_Details" as "getDetails");
+	"SINGHPRAB"."MaintainIT.tablestructures::DEVICEDETAILS" as "DeviceInfo"; 
+    association "Device_Details" principal "Devices"("DEVICETYPE") multiplicity "1"
+    dependent "DeviceInfo"("DEVICETYPE") multiplicity "*";
+}  

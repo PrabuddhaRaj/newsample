@@ -1,0 +1,11 @@
+table.tableType = COLUMNSTORE;
+table.schemaName = "SINGHPRAB";
+table.columns = [
+{name="DEVICE_ID"; sqlType = VARCHAR; length = 10; nullable = false;},
+{name="DEVICETYPE"; sqlType = VARCHAR; length = 10; nullable = false;},
+{name="LOCATION"; sqlType = VARCHAR; length = 100;},
+{name="DUEDATE"; sqlType = DATE;},
+{name="LSERVICEDATE"; sqlType = DATE;},
+{name="PURCHASEDON"; sqlType = DATE;},
+{name="AMCCOST"; sqlType = DECIMAL;}];
+table.primaryKey.pkcolumns = ["DEVICE_ID"];
