@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Privilege:analyticPrivilege xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:AccessControl="http://www.sap.com/ndb/SQLCoreModelAccessControl.ecore" xmlns:Privilege="http://www.sap.com/ndb/BiModelPrivilege.ecore" schemaVersion="1.1" id="AP_EMPLOYEE">
+  <origin/>
+  <descriptions defaultDescription="AP_EMPLOYEE"/>
+  <metadata changedAt="2015-06-14 22:54:48.716" createdAt="2015-06-11 16:39:41.477"/>
+  <securedModels allInformationModels="false">
+    <modelUri>/demo_content.MessageMngmt/attributeviews/AT_MESSAGE</modelUri>
+  </securedModels>
+  <restriction logicalOperator="AND">
+    <filter xsi:type="Privilege:AttributeFilter" attributeName="ASSIGNEDTO_ID">
+      <procedureFilter operator="EQ" procedureName="demo_content.MessageMngmt.procedures::PROC_PRIVILEGE_MSG"/>
+    </filter>
+    <dimensionUri>/demo_content.MessageMngmt/attributeviews/AT_MESSAGE</dimensionUri>
+  </restriction>
+</Privilege:analyticPrivilege>

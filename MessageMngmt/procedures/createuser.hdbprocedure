@@ -1,0 +1,35 @@
+procedure SINGHPRAB."demo_content.MessageMngmt.procedures::createuser"(IN userinput "demo_content.MessageMngmt.tablestructures::user", OUT error "demo_content.MessageMngmt.tablestructures::error")
+language sqlscript as 
+uid  String;
+passwd String;
+isAdmin String;
+uname String;
+e_name  String;
+t_name  String;
+m_id  String;
+m_name String;
+begin
+select U_ID into uid from :userinput ;
+select U_NAME into passwd from :userinput;
+select ISADMIN into isAdmin from :userinput;
+select EMP_ID into uname from "SINGHPRAB"."EMPLOYEE"  where EMP_ID =:uid;
+select EMP_NAME into e_name from "SINGHPRAB"."EMPLOYEE"  where EMP_ID =:uid;
+select TEAM_NAME into t_name from  "SINGHPRAB"."EMPLOYEE"  where EMP_ID =:uid;
+select MANAGER_ID into m_id from "SINGHPRAB"."EMPLOYEE"  where EMP_ID =:uid;
+if :uname is not null
+then
+exec 'create user '|| :uname || ' password '||:passwd;
+exec 'alter user '|| :uname || ' disable password lifetime';
+if :isAdmin = 'N'
+then
+call "_SYS_REPO"."GRANT_ACTIVATED_ROLE"
+('demo_content.MessageMngmt::newrole',:uname);
+insert into SINGHPRAB."USERS" values (upper(:uid),:e_name,:t_name,null,'N');
+else
+exec 'grant "UserMessageAdmin" to ' || :uname;
+insert into SINGHPRAB."USERS" values (upper(:uid),:e_name,:t_name,:m_id,'Y');
+end if;
+else
+error = select 400 as HTTP_STATUS_CODE ,'creation failed' ERROR_MESSAGE,'user creation failed' DETAIL from dummy;
+end if;
+end;

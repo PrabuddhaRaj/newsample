@@ -1,0 +1,14 @@
+PROCEDURE "SINGHPRAB"."demo_content.MessageMngmt.procedures::deleteuser" (IN userinput "demo_content.MessageMngmt.tablestructures::user", OUT error "demo_content.MessageMngmt.tablestructures::error") 
+	LANGUAGE SQLSCRIPT
+	as
+	uid  String;
+BEGIN
+select U_ID into uid from :userinput ;
+if :uid is not null
+then
+exec ' delete user ' || :uid;
+delete from SINGHPRAB."USERS" where U_ID =:uid;
+else
+error = select 400 as HTTP_STATUS_CODE ,'deletion failed' ERROR_MESSAGE,'user deletion failed' DETAIL from dummy;
+end if;
+END;

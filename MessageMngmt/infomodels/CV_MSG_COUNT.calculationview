@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" schemaVersion="2.3" id="CV_MSG_COUNT" applyPrivilegeType="ANALYTIC_PRIVILEGE" checkAnalyticPrivileges="true" defaultClient="$$client$$" defaultLanguage="$$language$$" visibility="reportingEnabled" calculationScenarioType="TREE_BASED" dataCategory="CUBE" enforceSqlExecution="false" executionSemantic="UNDEFINED" outputViewType="Aggregation">
+  <descriptions defaultDescription="CV_MSG_COUNT"/>
+  <localVariables/>
+  <variableMappings/>
+  <dataSources>
+    <DataSource id="AN_MSG_COUNT" type="ANALYTIC_VIEW">
+      <viewAttributes allViewAttributes="true"/>
+      <resourceUri>/demo_content.MessageMngmt.infomodels/analyticviews/AN_MSG_COUNT</resourceUri>
+    </DataSource>
+  </dataSources>
+  <calculationViews>
+    <calculationView xsi:type="Calculation:ProjectionView" id="Projection_1">
+      <viewAttributes>
+        <viewAttribute id="row_count"/>
+        <viewAttribute id="U_ID"/>
+        <viewAttribute id="MSG_ID"/>
+        <viewAttribute id="MSG_STATUS"/>
+        <viewAttribute id="CURRENTSTATE"/>
+      </viewAttributes>
+      <calculatedViewAttributes>
+        <calculatedViewAttribute datatype="INTEGER" id="COUNT_MSG_STATUS">
+          <formula>&quot;MSG_STATUS&quot;</formula>
+        </calculatedViewAttribute>
+      </calculatedViewAttributes>
+      <input node="#AN_MSG_COUNT">
+        <mapping xsi:type="Calculation:AttributeMapping" target="row_count" source="row.count"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="U_ID" source="U_ID"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MSG_ID" source="MSG_ID"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MSG_STATUS" source="MSG_STATUS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CURRENTSTATE" source="CURRENTSTATE"/>
+      </input>
+    </calculationView>
+  </calculationViews>
+  <logicalModel id="Projection_1">
+    <attributes>
+      <attribute id="MSG_STATUS" order="1" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="MSG_STATUS"/>
+        <keyMapping columnObjectName="Projection_1" columnName="MSG_STATUS"/>
+      </attribute>
+    </attributes>
+    <calculatedAttributes/>
+    <privateDataFoundation>
+      <tableProxies/>
+      <joins/>
+      <layout>
+        <shapes/>
+      </layout>
+    </privateDataFoundation>
+    <baseMeasures>
+      <measure id="COUNT_MSG_STATUS" order="2" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="COUNT_MSG_STATUS"/>
+        <measureMapping columnObjectName="Projection_1" columnName="COUNT_MSG_STATUS"/>
+      </measure>
+      <measure id="MSG_STATUS_1" order="3" aggregationType="count" measureType="simple">
+        <descriptions defaultDescription="MSG_STATUS"/>
+        <measureMapping columnObjectName="Projection_1" columnName="MSG_STATUS"/>
+      </measure>
+    </baseMeasures>
+    <calculatedMeasures/>
+    <restrictedMeasures/>
+    <localDimensions/>
+  </logicalModel>
+  <layout>
+    <shapes>
+      <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+        <upperLeftCorner x="40" y="85"/>
+        <rectangleSize height="0" width="0"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_1" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="120" y="320"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+    </shapes>
+  </layout>
+</Calculation:scenario>

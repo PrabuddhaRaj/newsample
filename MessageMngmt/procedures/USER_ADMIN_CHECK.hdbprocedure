@@ -1,0 +1,13 @@
+PROCEDURE "SINGHPRAB"."demo_content.MessageMngmt.procedures::USER_ADMIN_CHECK" ( out var_out varchar(1)) 
+	LANGUAGE SQLSCRIPT
+	SQL SECURITY INVOKER 
+	--DEFAULT SCHEMA <default_schema_name>
+	READS SQL DATA AS
+BEGIN
+/***************************** 
+	Write your procedure logic 
+ *****************************/
+ 
+ select ISADMIN into var_out from "SINGHPRAB"."USERS" where U_ID in (select session_user from dummy);
+
+END;

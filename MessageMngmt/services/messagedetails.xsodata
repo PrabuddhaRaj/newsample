@@ -1,0 +1,3 @@
+service{
+"SINGHPRAB"."MESSAGE" as "message" without("ASSIGNED_DATE","CLOSED_DATE");
+}

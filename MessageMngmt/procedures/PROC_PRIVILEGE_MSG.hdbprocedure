@@ -1,0 +1,13 @@
+PROCEDURE "SINGHPRAB"."demo_content.MessageMngmt.procedures::PROC_PRIVILEGE_MSG" (out varuser nvarchar(30) ) 
+	LANGUAGE SQLSCRIPT
+	SQL SECURITY DEFINER 
+	--DEFAULT SCHEMA <default_schema_name>
+	READS SQL DATA AS
+BEGIN
+/***************************** 
+	Write your procedure logic 
+ *****************************/
+ 
+ select session_user into varuser from dummy;
+ 
+END;

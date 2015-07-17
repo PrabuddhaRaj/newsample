@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Cube:cube xmlns:Cube="http://www.sap.com/ndb/BiModelCube.ecore" schemaVersion="1.5" id="AN_MSG_COUNT" applyPrivilegeType="ANALYTIC_PRIVILEGE" checkAnalyticPrivileges="true" defaultClient="$$client$$" defaultLanguage="$$language$$" visibility="reportingEnabled">
+  <descriptions defaultDescription="AN_MSG_COUNT"/>
+  <metadata changedAt="2015-06-27 16:09:57.095"/>
+  <localVariables/>
+  <privateMeasureGroup id="MeasureGroup">
+    <attributes>
+      <attribute id="U_ID" order="1" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="U_ID"/>
+        <keyMapping schemaName="SINGHPRAB" columnObjectName="USERS" columnName="U_ID"/>
+      </attribute>
+      <attribute id="MSG_ID" order="2" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="MSG_ID"/>
+        <keyMapping schemaName="SINGHPRAB" columnObjectName="MESSAGE" columnName="MSG_ID"/>
+      </attribute>
+      <attribute id="MSG_STATUS" order="3" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="MSG_STATUS"/>
+        <keyMapping schemaName="SINGHPRAB" columnObjectName="MESSAGE" columnName="MSG_STATUS"/>
+      </attribute>
+      <attribute id="CURRENTSTATE" order="4" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="dropdown"/>
+        <keyMapping schemaName="SINGHPRAB" columnObjectName="MESSAGE" columnName="CURRENTSTATE"/>
+      </attribute>
+      <attribute id="U_NAME" order="7" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="U_NAME"/>
+        <keyMapping schemaName="SINGHPRAB" columnObjectName="USERS" columnName="U_NAME"/>
+      </attribute>
+    </attributes>
+    <calculatedAttributes/>
+    <privateDataFoundation>
+      <tableProxies>
+        <tableProxy>
+          <table schemaName="SINGHPRAB" columnObjectName="USERS"/>
+        </tableProxy>
+        <tableProxy centralTable="true">
+          <table schemaName="SINGHPRAB" columnObjectName="MESSAGE"/>
+        </tableProxy>
+      </tableProxies>
+      <joins>
+        <join>
+          <leftTable schemaName="SINGHPRAB" columnObjectName="USERS"/>
+          <rightTable schemaName="SINGHPRAB" columnObjectName="MESSAGE"/>
+          <leftColumns>
+            <columnName>U_ID</columnName>
+          </leftColumns>
+          <rightColumns>
+            <columnName>ASSIGNEDTO_ID</columnName>
+          </rightColumns>
+          <properties joinOperator="Equal" joinType="referential"/>
+        </join>
+      </joins>
+      <layout>
+        <shapes>
+          <shape modelObjectName="USERS" modelObjectNameSpace="SINGHPRAB" modelObjectType="catalog">
+            <upperLeftCorner x="70" y="30"/>
+          </shape>
+          <shape modelObjectName="MESSAGE" modelObjectNameSpace="SINGHPRAB" modelObjectType="catalog">
+            <upperLeftCorner x="315" y="30"/>
+          </shape>
+        </shapes>
+      </layout>
+    </privateDataFoundation>
+    <baseMeasures/>
+    <calculatedMeasures>
+      <measure id="COUNTER_MSG_STATUS" hidden="false" order="5" aggregationType="sum" measureType="simple" calculateBeforeAggregation="false" datatype="INTEGER">
+        <descriptions defaultDescription="COUNTER_MSG_STATUS"/>
+        <formula>1</formula>
+      </measure>
+      <measure id="CC_MSG" hidden="false" order="6" aggregationType="sum" measureType="simple" calculatedMeasureType="counter" datatype="INTEGER">
+        <descriptions defaultDescription="CC_MSG"/>
+        <exceptionAggregation exceptionAggregationType="countDistinct">
+          <attribute attributeName="MSG_STATUS"/>
+        </exceptionAggregation>
+        <formula>1</formula>
+      </measure>
+    </calculatedMeasures>
+    <restrictedMeasures/>
+    <sharedDimensions/>
+    <layout>
+      <shapes>
+        <shape modelObjectName="MEASURE_GROUP" modelObjectType="repository">
+          <upperLeftCorner x="0" y="30"/>
+        </shape>
+        <shape modelObjectName="LogicalView" modelObjectNameSpace="MeasureGroup" modelObjectType="repository">
+          <upperLeftCorner x="40" y="85"/>
+          <rectangleSize height="0" width="0"/>
+        </shape>
+      </shapes>
+    </layout>
+  </privateMeasureGroup>
+</Cube:cube>

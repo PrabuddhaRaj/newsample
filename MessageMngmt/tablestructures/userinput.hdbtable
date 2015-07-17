@@ -1,0 +1,6 @@
+table.tableType = COLUMNSTORE;
+table.schemaName = "SINGHPRAB";
+table.columns = [{name = "U_ID"; sqlType = VARCHAR;length = 10; nullable = false;},{name="PASSWORD";sqlType = VARCHAR; length = 10;},
+{name="ISADMIN";sqlType = VARCHAR; length = 10;}];
+table.primaryKey.pkcolumns = ["U_ID"];
+

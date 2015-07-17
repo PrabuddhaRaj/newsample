@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Dimension:dimension xmlns:Dimension="http://www.sap.com/ndb/BiModelDimension.ecore" schemaVersion="1.2" id="AT_EMPLOYEE" applyPrivilegeType="ANALYTIC_PRIVILEGE" checkAnalyticPrivileges="true" defaultClient="$$client$$" defaultLanguage="$$language$$" visibility="internal" dimensionType="Standard">
+  <origin/>
+  <descriptions defaultDescription="AT_EMPLOYEE"/>
+  <metadata changedAt="2015-06-11 16:35:11.097"/>
+  <attributes>
+    <attribute id="EMP_ID" key="true" order="1" attributeHierarchyActive="false" displayAttribute="false">
+      <descriptions defaultDescription="EMP_ID"/>
+      <keyMapping schemaName="SINGHPRAB" columnObjectName="EMPLOYEE" columnName="EMP_ID"/>
+    </attribute>
+    <attribute id="EMP_NAME" order="2" attributeHierarchyActive="false" displayAttribute="false">
+      <descriptions defaultDescription="EMP_NAME"/>
+      <keyMapping schemaName="SINGHPRAB" columnObjectName="EMPLOYEE" columnName="EMP_NAME"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <privateDataFoundation>
+    <tableProxies>
+      <tableProxy>
+        <table schemaName="SINGHPRAB" columnObjectName="EMPLOYEE"/>
+      </tableProxy>
+    </tableProxies>
+    <joins/>
+    <layout>
+      <shapes>
+        <shape modelObjectName="EMPLOYEE" modelObjectNameSpace="SINGHPRAB" modelObjectType="catalog">
+          <upperLeftCorner x="70" y="30"/>
+        </shape>
+        <shape modelObjectName="DataFoundation" modelObjectNameSpace="DataFoundation" modelObjectType="repository">
+          <upperLeftCorner x="40" y="85"/>
+          <rectangleSize/>
+        </shape>
+      </shapes>
+    </layout>
+  </privateDataFoundation>
+  <hierarchies/>
+</Dimension:dimension>

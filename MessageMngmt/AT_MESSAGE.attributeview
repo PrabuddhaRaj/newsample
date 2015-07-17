@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Dimension:dimension xmlns:Dimension="http://www.sap.com/ndb/BiModelDimension.ecore" schemaVersion="1.2" id="AT_MESSAGE" applyPrivilegeType="ANALYTIC_PRIVILEGE" checkAnalyticPrivileges="true" defaultClient="$$client$$" defaultLanguage="$$language$$" visibility="internal" dimensionType="Standard">
+  <origin/>
+  <descriptions defaultDescription="AT_MESSAGE"/>
+  <metadata changedAt="2015-06-11 16:37:15.388"/>
+  <attributes>
+    <attribute id="MSG_ID" key="true" order="1" attributeHierarchyActive="false" displayAttribute="false">
+      <descriptions defaultDescription="MSG_ID"/>
+      <keyMapping schemaName="SINGHPRAB" columnObjectName="MESSAGE" columnName="MSG_ID"/>
+    </attribute>
+    <attribute id="MSG_NAME" order="2" attributeHierarchyActive="false" displayAttribute="false">
+      <descriptions defaultDescription="MSG_NAME"/>
+      <keyMapping schemaName="SINGHPRAB" columnObjectName="MESSAGE" columnName="MSG_NAME"/>
+    </attribute>
+    <attribute id="MSG_STATUS" order="3" attributeHierarchyActive="false" displayAttribute="false">
+      <descriptions defaultDescription="MSG_STATUS"/>
+      <keyMapping schemaName="SINGHPRAB" columnObjectName="MESSAGE" columnName="MSG_STATUS"/>
+    </attribute>
+    <attribute id="ASSIGNEDTO_ID" order="4" attributeHierarchyActive="false" displayAttribute="false">
+      <descriptions defaultDescription="ASSIGNEDTO_ID"/>
+      <keyMapping schemaName="SINGHPRAB" columnObjectName="MESSAGE" columnName="ASSIGNEDTO_ID"/>
+    </attribute>
+    <attribute id="ASSIGNEDTO_NAME" order="5" attributeHierarchyActive="false" displayAttribute="false">
+      <descriptions defaultDescription="ASSIGNEDTO_NAME"/>
+      <keyMapping schemaName="SINGHPRAB" columnObjectName="MESSAGE" columnName="ASSIGNEDTO_NAME"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <privateDataFoundation>
+    <tableProxies>
+      <tableProxy>
+        <table schemaName="SINGHPRAB" columnObjectName="MESSAGE"/>
+      </tableProxy>
+    </tableProxies>
+    <joins/>
+    <layout>
+      <shapes>
+        <shape modelObjectName="MESSAGE" modelObjectNameSpace="SINGHPRAB" modelObjectType="catalog">
+          <upperLeftCorner x="70" y="30"/>
+        </shape>
+        <shape modelObjectName="DataFoundation" modelObjectNameSpace="DataFoundation" modelObjectType="repository">
+          <upperLeftCorner x="40" y="85"/>
+          <rectangleSize/>
+        </shape>
+      </shapes>
+    </layout>
+  </privateDataFoundation>
+  <hierarchies/>
+</Dimension:dimension>

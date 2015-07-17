@@ -1,0 +1,4 @@
+service{
+"demo_content.MessageMngmt.infomodels::AV_ANLAYTICS" as "MSGSTATUS" with ("MSG_ID","MSG_STATUS","CURRENTSTATE","ASSIGNEDTO_ID","checki") keys ("MSG_ID") aggregates always(SUM of "checki");
+
+}

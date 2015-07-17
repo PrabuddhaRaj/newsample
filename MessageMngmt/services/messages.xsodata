@@ -1,0 +1,6 @@
+service namespace "getMessageDetails" { 
+"SINGHPRAB"."EMPLOYEE" as "employee"  navigates ("getMessage" as "message");  
+"SINGHPRAB"."MESSAGE" as "message" without("ASSIGNED_DATE","CLOSED_DATE") ;
+association "getMessage" principal "employee"("EMP_ID") multiplicity "1" 
+dependent "message"("ASSIGNEDTO_ID") multiplicity "*" ;
+}  

@@ -1,0 +1,6 @@
+table.schemaName = "SINGHPRAB";
+table.columns = [
+ {name = "HTTP_STATUS_CODE"; sqlType = INTEGER;},
+ {name = "ERROR_MESSAGE"; sqlType = VARCHAR; length = 100;},
+ {name = "DETAIL"; sqlType = VARCHAR; length = 100;}
+];

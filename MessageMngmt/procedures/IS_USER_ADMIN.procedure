@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<UDE:Procedure xmlns:UDE="http://www.sap.com/ndb/SQLCoreModelUDE.ecore" xmlns:DataTypes="http://www.sap.com/ndb/SQLCoreModelDataTypes.ecore" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="IS_USER_ADMIN" schemaVersion="2" procedureType="procedure" runWithInvokerPrivileges="false" language="SQLSCRIPT" accessMode="ReadOnly">
+<descriptions defaultDescription=""/>
+<metadata changedAt ="2015-06-17 01:48:07.644" createdAt="2015-06-15 15:48:14.719"/>
+<origin/>
+<schema id="_SYS_BIC"/>
+<definition> 
+
+BEGIN
+/***************************** 
+	Write your procedure logic 
+ *****************************/
+ 
+  select ISADMIN into var_out from &quot;SINGHPRAB&quot;.&quot;USERS&quot; where U_ID in (select session_user from dummy);
+ 
+ 
+END;</definition>
+<defaultSchema schemaName="SINGHPRAB"/>
+<parameters id="var_out" paramType="OUT">
+  <type xsi:type="DataTypes:CharacterStringSQLDataType" id="VARCHAR" length="1"/>
+</parameters>
+<localTableType>CREATE TYPE var_out AS TABLE (ISADMIN VARCHAR(1));
+</localTableType>
+<header>CREATE PROCEDURE _SYS_BIC.IS_USER_ADMIN(OUT var_out VARCHAR(1))
+	LANGUAGE SQLSCRIPT
+	SQL SECURITY DEFINER
+	DEFAULT SCHEMA SINGHPRAB
+	READS SQL DATA AS</header>
+</UDE:Procedure>

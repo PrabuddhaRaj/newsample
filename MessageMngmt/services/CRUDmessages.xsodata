@@ -1,0 +1,7 @@
+// To define an XS OData service, you can use the following syntax.
+// In the example below Aggregation, Modification and Association are defined.
+
+service  { 
+"SINGHPRAB"."EMPLOYEE" as "employee";
+
+}  

@@ -1,0 +1,7 @@
+role demo_content.MessageMngmt::newrole {
+analytic privilege: demo_content.MessageMngmt:AP_EMPLOYEE.analyticprivilege;
+catalog sql object "SYS"."REPOSITORY_REST": EXECUTE;
+catalog schema "_SYS_BIC": SELECT, EXECUTE,INSERT,UPDATE,DELETE,DEBUG;
+catalog schema "_SYS_BI": SELECT, EXECUTE,INSERT,UPDATE,DELETE,DEBUG;
+package demo_content : REPO.MAINTAIN_NATIVE_PACKAGES,REPO.READ,REPO.ACTIVATE_NATIVE_OBJECTS;
+}

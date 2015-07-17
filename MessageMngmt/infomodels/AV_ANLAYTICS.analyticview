@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Cube:cube xmlns:Cube="http://www.sap.com/ndb/BiModelCube.ecore" schemaVersion="1.5" id="AV_ANLAYTICS" applyPrivilegeType="ANALYTIC_PRIVILEGE" checkAnalyticPrivileges="true" defaultClient="$$client$$" defaultLanguage="$$language$$" visibility="reportingEnabled">
+  <origin/>
+  <descriptions defaultDescription="AV_ANLAYTICS"/>
+  <metadata changedAt="2015-06-27 18:01:23.711"/>
+  <localVariables/>
+  <privateMeasureGroup id="MeasureGroup">
+    <attributes>
+      <attribute id="MSG_ID" order="1" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="MSG_ID"/>
+        <keyMapping schemaName="SINGHPRAB" columnObjectName="MESSAGE" columnName="MSG_ID"/>
+      </attribute>
+      <attribute id="MSG_NAME" order="2" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="MSG_NAME"/>
+        <keyMapping schemaName="SINGHPRAB" columnObjectName="MESSAGE" columnName="MSG_NAME"/>
+      </attribute>
+      <attribute id="MSG_STATUS" order="3" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="MSG_STATUS"/>
+        <keyMapping schemaName="SINGHPRAB" columnObjectName="MESSAGE" columnName="MSG_STATUS"/>
+      </attribute>
+      <attribute id="ASSIGNEDTO_ID" order="4" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="ASSIGNEDTO_ID"/>
+        <keyMapping schemaName="SINGHPRAB" columnObjectName="MESSAGE" columnName="ASSIGNEDTO_ID"/>
+      </attribute>
+      <attribute id="ASSIGNEDTO_NAME" order="5" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="ASSIGNEDTO_NAME"/>
+        <keyMapping schemaName="SINGHPRAB" columnObjectName="MESSAGE" columnName="ASSIGNEDTO_NAME"/>
+      </attribute>
+      <attribute id="ASSIGNEDBY_ID" order="6" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="ASSIGNEDBY_ID"/>
+        <keyMapping schemaName="SINGHPRAB" columnObjectName="MESSAGE" columnName="ASSIGNEDBY_ID"/>
+      </attribute>
+      <attribute id="ASSIGNEDBY_NAME" order="7" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="ASSIGNEDBY_NAME"/>
+        <keyMapping schemaName="SINGHPRAB" columnObjectName="MESSAGE" columnName="ASSIGNEDBY_NAME"/>
+      </attribute>
+      <attribute id="ASSIGNED_DATE" order="8" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="ASSIGNED_DATE"/>
+        <keyMapping schemaName="SINGHPRAB" columnObjectName="MESSAGE" columnName="ASSIGNED_DATE"/>
+      </attribute>
+      <attribute id="CLOSED_DATE" order="9" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CLOSED_DATE"/>
+        <keyMapping schemaName="SINGHPRAB" columnObjectName="MESSAGE" columnName="CLOSED_DATE"/>
+      </attribute>
+      <attribute id="COMMENTS" order="10" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="COMMENTS"/>
+        <keyMapping schemaName="SINGHPRAB" columnObjectName="MESSAGE" columnName="COMMENTS"/>
+      </attribute>
+      <attribute id="CURRENTSTATE" order="11" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="dropdown"/>
+        <keyMapping schemaName="SINGHPRAB" columnObjectName="MESSAGE" columnName="CURRENTSTATE"/>
+      </attribute>
+    </attributes>
+    <calculatedAttributes/>
+    <privateDataFoundation>
+      <tableProxies>
+        <tableProxy centralTable="true">
+          <table schemaName="SINGHPRAB" columnObjectName="MESSAGE"/>
+        </tableProxy>
+      </tableProxies>
+      <joins/>
+      <layout>
+        <shapes>
+          <shape modelObjectName="MESSAGE" modelObjectNameSpace="SINGHPRAB" modelObjectType="catalog">
+            <upperLeftCorner x="70" y="30"/>
+          </shape>
+        </shapes>
+      </layout>
+    </privateDataFoundation>
+    <baseMeasures/>
+    <calculatedMeasures>
+      <measure id="CC_TEST" hidden="false" order="12" aggregationType="sum" measureType="simple" calculateBeforeAggregation="true" datatype="INTEGER">
+        <descriptions defaultDescription="CC_TEST"/>
+        <formula>1</formula>
+      </measure>
+      <measure id="checki" hidden="false" order="13" aggregationType="sum" measureType="simple" calculatedMeasureType="counter" datatype="INTEGER">
+        <descriptions defaultDescription="checki"/>
+        <exceptionAggregation exceptionAggregationType="countDistinct">
+          <attribute attributeName="MSG_ID"/>
+        </exceptionAggregation>
+        <formula>1</formula>
+      </measure>
+    </calculatedMeasures>
+    <restrictedMeasures/>
+    <sharedDimensions/>
+    <layout>
+      <shapes>
+        <shape modelObjectName="MEASURE_GROUP" modelObjectType="repository">
+          <upperLeftCorner x="153" y="75"/>
+        </shape>
+        <shape modelObjectName="LogicalView" modelObjectNameSpace="MeasureGroup" modelObjectType="repository">
+          <upperLeftCorner x="40" y="85"/>
+          <rectangleSize height="0" width="0"/>
+        </shape>
+      </shapes>
+    </layout>
+  </privateMeasureGroup>
+</Cube:cube>
